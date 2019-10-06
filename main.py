@@ -2,6 +2,7 @@ import pygame
 import queue
 from tkinter import *
 from tkinter import messagebox
+import random
 
 
 def makeObstacle(surface, s, w, pos):
@@ -30,6 +31,17 @@ def makeObstacle(surface, s, w, pos):
         lY = lY + dist
 
 
+def randomMatrix(surface, s, w):
+ 
+    dist = s//w
+
+    for m in range(dist):
+        x = random.randint(0, s-1)
+        y = random.randint(0, s-1)
+        print(x,y)
+        makeObstacle(surface, s, w, (x, y))
+
+
 def makeMaze(surface, s, w):
 
     dist = s//w
@@ -54,77 +66,99 @@ def Breadth_First_Algorithm(surface, s, w):
     start = (0, 0)
     finish = (s - dist, s - dist)
 
+    sXX = start[0]
+    sYY = start[1]
+
     pygame.draw.rect(surface, (0, 0, 255), (start, (dist, dist)))
     pygame.draw.rect(surface, (0, 255, 0), (finish, (dist, dist)))
 
     pygame.display.update()
 
     count = 0
-
-    X = start[0] + (dist//w)
-    Y = start[1] + (dist//w)
+    sX = sXX + (dist//2)
+    sY = sYY + (dist//2)
 
     path = queue.Queue()
-    add = ""
+    add = "S"
     path.put(add)
 
     while True:
 
+        k = 0
         add = path.get()
+        print(add)
 
-        X = X + (add.count('R') - add.count('L')) * dist
-        Y = Y + (add.count('D') - add.count('U')) * dist
+        X = sX + (add.count('R') - add.count('L')) * dist
+        Y = sY + (add.count('D') - add.count('U')) * dist
+        print(X, Y)
         try:
-            if add[-1] != 'L' and X < (s - dist):
-                if surface.get_at((X + dist, Y))[0:3] != (180, 110, 255):
+            if X < (s - dist):
+                print("1")
+                if surface.get_at((X + dist, Y))[0:3] != (180, 110, 255) and add[-1] != 'L':
+                    print("1#", add+'R')
                     path.put(add + 'R')
-                    if surface.get_at((X + dist, Y))[0:3] != (0, 255, 0):
+                    k = 1
+                    if surface.get_at((X + dist, Y))[0:3] == (0, 255, 0):
                         res = add + 'R'
                         print("Found: ", res)
                         break
         except:
-            pass            
-        
+            print("1-")
+            pass
+
         try:
-            if add[-1] != 'R' and X > dist:
-                if surface.get_at((X - dist, Y))[0:3] != (180, 110, 255):
+            if X > dist:
+                print("2")
+                if surface.get_at((X - dist, Y))[0:3] != (180, 110, 255) and add[-1] != 'R':
+                    print("2#", add + 'L')
+                    k = 1
                     path.put(add + 'L')
-                    if surface.get_at((X - dist, Y))[0:3] != (0, 255, 0):
+                    if surface.get_at((X - dist, Y))[0:3] == (0, 255, 0):
                         res = add + 'L'
                         print("Found: ", res)
                         break
-                    
+
         except:
+            print("2-")
             pass
         try:
-            if add[-1] != 'D' and Y > dist:
-                if surface.get_at((X, Y - dist))[0:3] != (180, 110, 255):
+            if Y > dist:
+                print("3")
+                if surface.get_at((X, Y - dist))[0:3] != (180, 110, 255) and add[-1] != 'D':
+                    print("3#", add + 'U')
+                    k = 1
                     path.put(add + 'U')
-                    if surface.get_at((X, Y - dist))[0:3] != (0, 255, 0):
+                    if surface.get_at((X, Y - dist))[0:3] == (0, 255, 0):
                         res = add + 'U'
                         print("Found: ", res)
                         break
         except:
+            print("3-")
             pass
         try:
-            if add[-1] != 'U' and Y < (s - dist):
-                if surface.get_at((X, Y + dist))[0:3] != (180, 110, 255):
+            if Y < (s - dist):
+                print("4")
+                if surface.get_at((X, Y + dist))[0:3] != (180, 110, 255) and add[-1] != 'U':
+                    print("4#", add + 'D')
+                    k = 1
                     path.put(add + 'D')
-                    if surface.get_at((X, Y + dist))[0:3] != (0, 255, 0):
+                    if surface.get_at((X, Y + dist))[0:3] == (0, 255, 0):
                         res = add + 'D'
                         print("Found: ", res)
                         break
         except:
+            print("4-")
             pass
         count += 1
 
-        if count >= (w*w) or path.empty() == True:
+        if k == 0 and path.empty() == True:
             print("Maze not Found")
+            Tk().wm_withdraw()
             messagebox.showinfo("Path not found!")
             return
 
-    X = start[0] + (dist//w)
-    Y = start[1] + (dist//w)
+    X = sXX
+    Y = sYY
 
     pygame.draw.rect(surface, (0, 255, 0), ((X, Y), (dist, dist)))
 
@@ -139,8 +173,7 @@ def Breadth_First_Algorithm(surface, s, w):
             Y = Y + dist
 
         pygame.draw.rect(surface, (0, 255, 0), ((X, Y), (dist, dist)))
-    
-    pygame.display.update()
+    makeMaze(surface, s, w)
 
 
 def main():
@@ -170,6 +203,8 @@ def main():
         for key in keys:
             if keys[pygame.K_SPACE]:
                 lock = 1
+            if keys[pygame.K_DELETE]:
+                randomMatrix(win, screen_size, screen_width)
         if lock == 1:
             Breadth_First_Algorithm(win, screen_size, screen_width)
             lock = 2
