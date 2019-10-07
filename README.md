@@ -1,5 +1,9 @@
 
-<!-- PROJECT LOGO -->
+ ##  Breadth First Path Finding Algorithm
+<p align="center">
+  
+[![GitHub license](https://img.shields.io/github/license/AKASHCS50/Breadth-First-Path-Finding-Algorithm)](https://github.com/AKASHCS50/Breadth-First-Path-Finding-Algorithm/blob/master/LICENSE)
+<!-- PROJECT LOGO --></p>
 <br />
 <p align="center">
   <a href="https://github.com/AKASHCS50/Breadth-First-Path-Finding-Algorithm">
@@ -10,16 +14,19 @@
   </a>
 <hr>
 
+
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Built With](#built-with)
+* [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Installation](#installation)
   * [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
 * [Contact](#contact)
-
+* [License](#license)  
 
 
 <!-- ABOUT THE PROJECT -->
@@ -55,9 +62,6 @@ pip install pygame
 ```
 3. Install Tkinter ✔
 <br/>Tkinter is being used to show pop up message box when no path is found.
-```pip
-pip install tkinter
-```
 4. Setting up dimentions of maze ✔
 <br/>Open main.py code and change screen_width on line number <kbd>183</kbd> and screen_size on <kbd>184</kbd> to required value
 ```python
@@ -70,7 +74,7 @@ def main():
     lock = 0
 ```
 
-
+<br/>
 You are all ready to go 👍
 
 
@@ -79,11 +83,15 @@ You are all ready to go 👍
 
 <kbd>Delete</kbd> - Generate random maze (while window is open).
 
+## Roadmap
+The algorithm being used is quite slow for bigger sized mazes. Hence extending the project on same model (code) to implement more advanced algorithms like A* and Dijkstra.
+<br/>Contributions are welcomed.
+
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated** 🙌🙌
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**. 🙌🙌
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -94,8 +102,12 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ## Contact
 
-Akash Sharma:   [Gmail](akcount121@gmail.com) -   [Linkedin](www.linkedin.com/in/akash-sharma-1a5433178)
+Akash Sharma:   [Gmail](mailto:akcount121@gmail.com) -   [Linkedin](https://www.linkedin.com/in/akash-sharma-1a5433178/)
 
 Project Link: [https://github.com/AKASHCS50/Breadth-First-Path-Finding-Algorithm](https://github.com/AKASHCS50/Breadth-First-Path-Finding-Algorithm)
+
+## License
+[MIT](License) © Akash Sharma
+<br/><br/>
 
  ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ 
