@@ -107,7 +107,7 @@ Akash Sharma:   [Gmail](mailto:akcount121@gmail.com) -   [Linkedin](https://www.
 Project Link: [https://github.com/AKASHCS50/Breadth-First-Path-Finding-Algorithm](https://github.com/AKASHCS50/Breadth-First-Path-Finding-Algorithm)
 
 ## License
-[MIT](License) © Akash Sharma
+[MIT](https://github.com/AKASHCS50/Breadth-First-Path-Finding-Algorithm/blob/master/LICENSE) © Akash Sharma
 <br/><br/>
 
  ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ 
